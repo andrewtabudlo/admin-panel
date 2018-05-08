@@ -1,0 +1,14 @@
+<h1>Students#edit</h1>
+
+<%= form_for @student do |f| %>
+    <%= f.label :fname %>
+    <%= f.text_field :fname, value: @student.fname%>
+    <%= f.label :lname %>
+    <%= f.text_field :lname, value: @student.lname%>
+    <%= f.label :email %>
+    <%= f.text_field :email, value: @student.email%>
+    <%= f.submit %>
+<% end %>
+
+
+<%= link_to 'Delete', student_path(@student), method: :delete %>

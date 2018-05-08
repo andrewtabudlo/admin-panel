@@ -1,0 +1,14 @@
+<h1>Instructors#edit</h1>
+
+<%= form_for @instructor do |f| %>
+    <%= f.label :fname %>
+    <%= f.text_field :fname, value: @instructor.fname%>
+    <%= f.label :lname %>
+    <%= f.text_field :lname, value: @instructor.lname%>
+    <%= f.label :email %>
+    <%= f.text_field :email, value: @instructor.email%>
+    <%= f.submit %>
+<% end %>
+
+
+<%= link_to 'Delete', instructor_path(@instructor), method: :delete %>

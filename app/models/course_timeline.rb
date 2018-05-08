@@ -1,0 +1,2 @@
+class CourseTimeline < ApplicationRecord
+end

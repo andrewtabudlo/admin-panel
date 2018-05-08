@@ -1,0 +1,23 @@
+<h1>Courses#index</h1>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Code</th>
+      <th scope="col">Description</th>
+      <th scope="col">Tuition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% x = 0 %>
+    <% @courses.each do |c| %>
+    <tr>
+      <th scope="row"><%= x += 1 %></th>
+      <td><%= c.code %></td>
+      <td><%= c.description %></td>
+      <td><%= c.tuition %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

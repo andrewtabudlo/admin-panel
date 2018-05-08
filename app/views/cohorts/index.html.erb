@@ -1,0 +1,25 @@
+<h1>Cohorts#index</h1>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Course</th>
+      <th scope="col">Name</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">Instructor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% x = 0 %>
+    <% @cohorts.each do |i| %>
+    <tr>
+      <th scope="row"><%= x += 1 %></th>
+      <td><%= i.name %></td>
+      <td><%= Course.find(i.course_id).description %></td>
+      <td><%= i.startdate %></td>
+      <td><%= Instructor.find(i.instructor_id).fname %> <%= Instructor.find(i.instructor_id).lname %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
