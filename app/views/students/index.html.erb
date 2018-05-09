@@ -7,7 +7,7 @@
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Email</th>
-      <th scope="col">Edit</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -18,8 +18,13 @@
       <td><%= s.fname %></td>
       <td><%= s.lname %></td>
       <td><%= s.email %></td>
-      <td>*</td>
+      <td><%= link_to("Show", student_path(s), :class => 'action show') %>
+        <%= link_to("Edit", edit_student_path(s), :class => 'action edit') %>
+        <%= link_to 'Delete', student_path(s), method: 'delete' %> 
+      </td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to("Add New Student", new_student_path, :class => 'action new') %>

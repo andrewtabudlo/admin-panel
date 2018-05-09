@@ -1,2 +1,12 @@
 <h1>Instructors#new</h1>
-<p>Find me in app/views/instructors/new.html.erb</p>
+
+<%= form_for @instructor do |f| %>
+
+    <%= f.label :fname %>
+    <%= f.text_field :fname %>
+    <%= f.label :lname %>
+    <%= f.text_field :lname %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.submit %>
+<% end %>

@@ -1,2 +1,26 @@
 <h1>Instructors#show</h1>
-<p>Find me in app/views/instructors/show.html.erb</p>
+
+<%= link_to("Back to Instructors", instructors_path, :class => 'back-link') %>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Email</th>
+      <th scope="col">Cohorts</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= @instructor.fname %></td>
+      <td><%= @instructor.lname %></td>
+      <td><%= @instructor.email %></td>
+      <td>*</td>
+      <td>*</td>
+    </tr>
+  </tbody>
+</table>

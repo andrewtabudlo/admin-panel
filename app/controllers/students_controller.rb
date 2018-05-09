@@ -13,8 +13,12 @@ class StudentsController < ApplicationController
   end
 
   def create
-    Student.create(student_params)
-    redirect_to '/students'
+    @student = Student.new(student_params)
+    if @student.save
+      redirect_to '/students'
+    else
+      redirect_to 'new'
+    end
   end
 
   def edit
@@ -23,13 +27,21 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.find(params[:id])
-    @student.update(student_params)
-    redirect_to '/students'
+    if @student.update(student_params)
+      redirect_to student_path @student
+    else
+      redirect_to 'edit'
+    end
+  end
+
+  def delete
+    @student = Student.find(params[:id])
+
   end
 
   def destroy
     Student.find(params[:id]).destroy
-    redirect_to '/students'
+    redirect_to students_path
   end
 
   #http://edgeguides.rubyonrails.org/action_controller_overview.html#strong-parameters
@@ -38,7 +50,7 @@ class StudentsController < ApplicationController
   # just a good pattern since you'll be able to reuse the same permit
   # list between create and update. Also, you can specialize this method
   # with per-user checking of permissible attributes.
-  def owner_params
-    params.require(:student).permit(:name, :dob, :email, :id)
+  def student_params
+    params.require(:student).permit(:fname, :lname, :email, :id)
   end
 end
