@@ -8,6 +8,7 @@
       <th scope="col">Name</th>
       <th scope="col">Start Date</th>
       <th scope="col">Instructor</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -19,7 +20,13 @@
       <td><%= Course.find(i.course_id).description %></td>
       <td><%= i.startdate %></td>
       <td><%= Instructor.find(i.instructor_id).fname %> <%= Instructor.find(i.instructor_id).lname %></td>
+      <td><%= link_to("Show", cohort_path(i), :class => 'action show') %>
+        <%= link_to("Edit", edit_cohort_path(i), :class => 'action edit') %>
+        <%= link_to 'Delete', cohort_path(i), method: 'delete' %>
+      </td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to("Add New Cohort", new_cohort_path, :class => 'action new') %>

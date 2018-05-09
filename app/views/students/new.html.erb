@@ -1,12 +1,8 @@
 <h1>Students#new</h1>
 
-<%= form_for @student do |f| %>
-
-    <%= f.label :fname %>
+<%= bootstrap_form_for @student do |f| %>
     <%= f.text_field :fname %>
-    <%= f.label :lname %>
     <%= f.text_field :lname %>
-    <%= f.label :email %>
     <%= f.text_field :email %>
     <%= f.submit %>
 <% end %>

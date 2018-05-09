@@ -1,2 +1,50 @@
 <h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+
+<%= link_to("Back to Courses", courses_path, :class => 'back-link') %>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Code</th>
+      <th scope="col">Description</th>
+      <th scope="col">Tuition</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= @course.code %></td>
+      <td><%= @course.description %></td>
+      <td><%= @course.tuition %></td>
+      <td><%= link_to("Show", course_path(@course), :class => 'action show') %>
+        <%= link_to("Edit", edit_course_path(@course), :class => 'action edit') %>
+        <%= link_to "Delete", course_path(@course), method: 'delete' %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>Course Cohorts</h1>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">Instructor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cohorts.each do |c| %>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= c.name %></td>
+      <td><%= c.startdate %></td>
+      <td><%= Instructor.find(c.instructor_id).fname %> <%= Instructor.find(c.instructor_id).lname %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

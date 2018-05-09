@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :instructors
   resources :cohorts
   resources :courses
+  resources :cohortstudents
 end

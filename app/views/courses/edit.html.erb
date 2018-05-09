@@ -1,2 +1,12 @@
 <h1>Courses#edit</h1>
-<p>Find me in app/views/courses/edit.html.erb</p>
+
+<%= link_to("Back to Courses", courses_path, :class => 'back-link') %>
+
+<div>
+  <%= bootstrap_form_for @course do |f| %>
+    <%= f.text_field :code, value: @course.code %><br/>
+    <%= f.text_field :description, value: @course.description %><br/>
+    <%= f.text_field :tuition, value: @course.tuition %><br/>
+    <%= f.submit %>
+  <% end %>
+</div>

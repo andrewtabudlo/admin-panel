@@ -1,12 +1,10 @@
 <h1>Instructors#new</h1>
 
-<%= form_for @instructor do |f| %>
+<%= link_to("Back to Instructors", instructors_path, :class => 'back-link') %>
 
-    <%= f.label :fname %>
+<%= bootstrap_form_for @instructor do |f| %>
     <%= f.text_field :fname %>
-    <%= f.label :lname %>
     <%= f.text_field :lname %>
-    <%= f.label :email %>
     <%= f.text_field :email %>
     <%= f.submit %>
 <% end %>

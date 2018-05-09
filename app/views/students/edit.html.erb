@@ -1,13 +1,12 @@
 <h1>Students#edit</h1>
 
-<%= form_for @student do |f| %>
+<%= link_to("Back to Students", students_path, :class => 'back-link') %>
 
-    <%= f.label :fname %>
-    <%= f.text_field :fname, value: @student.fname%>
-    <%= f.label :lname %>
-    <%= f.text_field :lname, value: @student.lname%>
-    <%= f.label :email %>
-    <%= f.text_field :email, value: @student.email%>
+
+<%= bootstrap_form_for @student do |f| %>
+    <%= f.text_field :fname %>
+    <%= f.text_field :lname %>
+    <%= f.text_field :email %>
     <%= f.submit %>
 <% end %>
 

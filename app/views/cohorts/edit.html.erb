@@ -1,2 +1,15 @@
 <h1>Cohorts#edit</h1>
-<p>Find me in app/views/cohorts/edit.html.erb</p>
+
+<%= link_to("Back to Cohorts", cohorts_path, :class => 'back-link') %>
+
+
+<%= bootstrap_form_for @cohort do |f| %>
+  <%= f.text_field :name, value: @cohort.name %>
+  <%= f.text_field :startdate, value: @cohort.startdate  %>
+  <%= f.number_field :tuition, value: @cohort.tuition  %>
+  <%= f.number_field :instructor_id, value: @cohort.instructor_id  %>
+  <%= f.number_field :course_id, value: @cohort.course_id  %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Delete', instructor_path(@cohort), method: 'delete' %>
