@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
 
+  root 'dashboard#index'
+
+  get 'admin', :to => 'access#menu'
+  get 'access/menu'
+  get 'access/login'
+  post 'access/attempt_login'
+  get 'access/logout'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'dashboard#index'
 
   resources :students
   resources :instructors
