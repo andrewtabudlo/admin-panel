@@ -26,8 +26,8 @@ class CohortsController < ApplicationController
   end
 
   def update
-    @cohort = Cohort.new(cohort_params)
-    if @cohort.save
+    @cohort = Cohort.find(params[:id])
+    if @cohort.update(cohort_params)
       redirect_to cohorts_path
     else
       redirect_to 'edit'

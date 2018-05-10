@@ -1,4 +1,4 @@
-class CohortstudentsController < ApplicationController
+class CohortStudentsController < ApplicationController
   def new
     @cohortstudent = CohortStudent.new
   end
@@ -28,6 +28,6 @@ class CohortstudentsController < ApplicationController
   private
 
   def cohortstudent_params
-    params.require(:cohortstudent).permit(:cohort_id, :student_id, :id)
+    params.require(:cohort_student).permit(:cohort_id, :student_id, :id)
   end
 end

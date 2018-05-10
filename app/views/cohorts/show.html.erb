@@ -10,6 +10,7 @@
       <th scope="col">Name</th>
       <th scope="col">Start Date</th>
       <th scope="col">Instructor</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +20,11 @@
       <td><%= Course.find(@cohort.course_id).description %></td>
       <td><%= @cohort.startdate %></td>
       <td><%= Instructor.find(@cohort.instructor_id).fname %> <%= Instructor.find(@cohort.instructor_id).lname %></td>
+      <td>
+        <%= link_to("Show", cohort_path(@cohort), :class => 'action show') %>
+        <%= link_to("Edit", edit_cohort_path(@cohort), :class => 'action edit') %>
+        <%= link_to "Delete", cohort_path(@cohort), method: 'delete' %>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -45,11 +51,11 @@
       <td>
         <%= link_to("Show", student_path(s.student_id), :class => 'action show') %>
         <%= link_to("Edit", edit_student_path(s.student_id), :class => 'action edit') %>
-        <%= link_to "Delete", student_path(s.student_id), method: 'delete' %>
+        <%= link_to("Delete", student_path(s.student_id), method: 'delete') %>
       </td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to("Add New Student to Cohort", new_cohortstudent_path, :class => 'action new') %>
+<%= link_to("Add New Student to Cohort", new_cohort_student_path, :class => 'action new') %>
