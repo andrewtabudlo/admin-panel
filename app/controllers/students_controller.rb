@@ -1,4 +1,7 @@
 class StudentsController < ApplicationController
+
+  before_action :confirm_logged_in
+
   def index
     @students = Student.all
   end
@@ -15,7 +18,8 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      redirect_to '/students'
+      flash[:notice] = "Student created successfully."
+      redirect_to students_path
     else
       redirect_to 'new'
     end
@@ -28,6 +32,7 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
     if @student.update(student_params)
+      flash[:notice] = "Student updated successfully."
       redirect_to student_path @student
     else
       redirect_to 'edit'
@@ -36,6 +41,7 @@ class StudentsController < ApplicationController
 
   def destroy
     Student.find(params[:id]).destroy
+    flash[:notice] = "Student destroyed successfully."
     redirect_to students_path
   end
 
@@ -47,5 +53,13 @@ class StudentsController < ApplicationController
   # with per-user checking of permissible attributes.
   def student_params
     params.require(:student).permit(:fname, :lname, :email, :id)
+  end
+
+  def confirm_logged_in
+    unless session[:user_id]
+      flash[:notice] = "Please log in."
+      redirect_to access_login_path
+      # redirect_to prevents requested action from running
+    end
   end
 end

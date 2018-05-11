@@ -1,4 +1,7 @@
 class InstructorsController < ApplicationController
+
+  before_action :confirm_logged_in
+
   def index
     @instructors = Instructor.all
   end
@@ -51,5 +54,13 @@ class InstructorsController < ApplicationController
   # with per-user checking of permissible attributes.
   def instructor_params
     params.require(:instructor).permit(:fname, :lname, :email, :id)
+  end
+
+  def confirm_logged_in
+    unless session[:user_id]
+      flash[:notice] = "Please log in."
+      redirect_to access_login_path
+      # redirect_to prevents requested action from running
+    end
   end
 end

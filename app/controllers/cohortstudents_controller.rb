@@ -1,4 +1,4 @@
-class CohortStudentsController < ApplicationController
+class CohortstudentsController < ApplicationController
 
   before_action :confirm_logged_in
 
@@ -31,7 +31,7 @@ class CohortStudentsController < ApplicationController
   private
 
   def cohortstudent_params
-    params.require(:cohort_student).permit(:cohort_id, :student_id, :id)
+    params.require(:cohortstudent).permit(:cohort_id, :student_id, :id)
   end
 
   def confirm_logged_in

@@ -1,4 +1,7 @@
 class CohortsController < ApplicationController
+
+  before_action :confirm_logged_in
+
   def index
     @cohorts = Cohort.all
   end
@@ -43,5 +46,13 @@ class CohortsController < ApplicationController
 
   def cohort_params
     params.require(:cohort).permit(:name, :startdate, :tuition, :instructor_id, :course_id, :id)
+  end
+
+  def confirm_logged_in
+    unless session[:user_id]
+      flash[:notice] = "Please log in."
+      redirect_to access_login_path
+      # redirect_to prevents requested action from running
+    end
   end
 end

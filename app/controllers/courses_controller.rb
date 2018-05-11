@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+
+  before_action :confirm_logged_in
+
   def index
     @courses = Course.all
   end
@@ -43,5 +46,13 @@ class CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit(:code, :description, :tuition, :id)
+  end
+
+  def confirm_logged_in
+    unless session[:user_id]
+      flash[:notice] = "Please log in."
+      redirect_to access_login_path
+      # redirect_to prevents requested action from running
+    end
   end
 end
