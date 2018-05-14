@@ -20,7 +20,7 @@
       <td><%= i.email %></td>
       <td><%= link_to("Show", instructor_path(i), :class => 'action show') %>
         <%= link_to("Edit", edit_instructor_path(i), :class => 'action edit') %>
-        <%= link_to 'Delete', instructor_path(i), method: 'delete' %>
+        <%= link_to 'Delete', instructor_path(i), method: 'delete', data: { confirm: "Are you sure you want to delete #{i.fname} #{i.lname}?" } %>
       </td>
     </tr>
     <% end %>

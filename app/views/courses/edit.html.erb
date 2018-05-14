@@ -10,3 +10,5 @@
     <%= f.submit %>
   <% end %>
 </div>
+
+<%= link_to "Delete", course_path(c), method: 'delete', data: { confirm: "Are you sure you want to delete #{@course.name}?" } %>
