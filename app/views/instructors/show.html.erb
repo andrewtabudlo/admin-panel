@@ -10,7 +10,7 @@
       <th scope="col">Last</th>
       <th scope="col">Email</th>
       <th scope="col">Cohorts</th>
-      <th scope="col">Edit</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -19,8 +19,11 @@
       <td><%= @instructor.fname %></td>
       <td><%= @instructor.lname %></td>
       <td><%= @instructor.email %></td>
-      <td>*</td>
-      <td>*</td>
+      <td><%= Cohort.find_by(instructor_id: @instructor.id).name %></td>
+      <td><%= link_to("Show", instructor_path(@instructor.id), :class => 'action show') %>
+        <%= link_to("Edit", edit_instructor_path(@instructor.id), :class => 'action edit') %>
+        <%= link_to 'Delete', instructor_path(@instructor.id), method: 'delete' %>
+      </td>
     </tr>
   </tbody>
 </table>
