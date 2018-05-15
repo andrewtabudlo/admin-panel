@@ -17,7 +17,7 @@
     <tr>
       <th scope="row"><%= x += 1 %></th>
       <td><%= i.name %></td>
-      <td><%= Course.find(i.course_id).description %></td>
+      <td><%= Course.find(i.course_id).name %></td>
       <td><%= i.startdate %></td>
       <td><%= Instructor.find(i.instructor_id).fname %> <%= Instructor.find(i.instructor_id).lname %></td>
       <td><%= link_to("Show", cohort_path(i), :class => 'action show') %>

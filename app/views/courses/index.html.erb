@@ -5,7 +5,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Code</th>
-      <th scope="col">Description</th>
+      <th scope="col">Name</th>
       <th scope="col">Tuition</th>
       <th scope="col">Actions</th>
     </tr>
@@ -16,12 +16,12 @@
     <tr>
       <th scope="row"><%= x += 1 %></th>
       <td><%= c.code %></td>
-      <td><%= c.description %></td>
+      <td><%= c.name %></td>
       <td><%= c.tuition %></td>
       <td>
         <%= link_to("Show", course_path(c), :class => 'action show') %>
         <%= link_to("Edit", edit_course_path(c), :class => 'action edit') %>
-        <%= link_to "Delete", course_path(c), method: 'delete', data: { confirm: "Are you sure you want to delete #{c.description}?" } %>
+        <%= link_to "Delete", course_path(c), method: 'delete', data: { confirm: "Are you sure you want to delete #{c.name}?" } %>
       </td>
     </tr>
     <% end %>

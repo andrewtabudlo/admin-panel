@@ -4,9 +4,9 @@ class CreateInstructors < ActiveRecord::Migration[5.1]
       t.string :fname
       t.string :lname
       t.string :email
-      t.string :password
-      t.boolean :active, :default => false
-      t.integer :address_id
+      t.integer :age
+      t.integer :salary
+      t.string :degree
 
       t.timestamps
     end

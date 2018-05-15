@@ -1,5 +1,11 @@
 <% @page_title = "Admin Login" %>
 
+<% if !flash[:notice].blank? %>
+  <div class="notice alert alert-primary" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class="login">
   <%= form_tag(access_attempt_login_path, :method => :post) do %>
   <table>

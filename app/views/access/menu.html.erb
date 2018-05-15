@@ -1,5 +1,11 @@
 <% @page_title = "Admin Menu" %>
 
+<% if !flash[:notice].blank? %>
+  <div class="notice alert alert-primary" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class="menu">
   <h2>Admin Menu</h2>
   <div class="identity">Logged in as:</div>

@@ -1,36 +1,40 @@
-<% if !flash[:notice].blank? %>
-  <div class="notice">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
+<div id="target-for-change">
 
-<h1>Students#index</h1>
+  <% if !flash[:notice].blank? %>
+    <div class="notice alert alert-primary" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
-<table class="table table-bordered table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Email</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% x = 0 %>
-    <% @students.each do |s| %>
-    <tr>
-      <th scope="row"><%= x += 1 %></th>
-      <td><%= s.fname %></td>
-      <td><%= s.lname %></td>
-      <td><%= s.email %></td>
-      <td><%= link_to("Show", student_path(s), :class => 'action show') %>
-        <%= link_to("Edit", edit_student_path(s), :class => 'action edit') %>
-        <%= link_to 'Delete', student_path(s), method: 'delete', data: { confirm: "Are you sure you want to delete #{s.fname} #{s.lname}?" } %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <h1>Students#index</h1>
+
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Email</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% x = 0 %>
+      <% @students.each do |s| %>
+      <tr>
+        <th scope="row"><%= x += 1 %></th>
+        <td><%= s.fname %></td>
+        <td><%= s.lname %></td>
+        <td><%= s.email %></td>
+        <td><%= link_to("Show", student_path(s), remote: true) %>
+          <%= link_to("Edit", edit_student_path(s), :class => 'action edit') %>
+          <%= link_to('Delete', student_path(s), method: 'delete', data: { confirm: "Are you sure you want to delete #{s.fname} #{s.lname}?" }) %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
 
 <%= link_to("Add New Student", new_student_path, :class => 'action new') %>

@@ -7,8 +7,9 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Code</th>
-      <th scope="col">Description</th>
+      <th scope="col">Name</th>
       <th scope="col">Tuition</th>
+      <th scope="col">hours</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -16,11 +17,12 @@
     <tr>
       <th scope="row">1</th>
       <td><%= @course.code %></td>
-      <td><%= @course.description %></td>
+      <td><%= @course.name %></td>
       <td><%= @course.tuition %></td>
+      <td><%= @course.hours %></td>
       <td><%= link_to("Show", course_path(@course), :class => 'action show') %>
         <%= link_to("Edit", edit_course_path(@course), :class => 'action edit') %>
-        <%= link_to "Delete", course_path(@course), method: 'delete', data: { confirm: "Are you sure you want to delete #{@course.description}?" } %>
+        <%= link_to "Delete", course_path(@course), method: 'delete', data: { confirm: "Are you sure you want to delete #{@course.name}?" } %>
       </td>
     </tr>
   </tbody>

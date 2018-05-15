@@ -5,8 +5,9 @@
 <div>
   <%= bootstrap_form_for @course do |f| %>
     <%= f.text_field :code, value: @course.code %><br/>
-    <%= f.text_field :description, value: @course.description %><br/>
-    <%= f.text_field :tuition, value: @course.tuition %><br/>
+    <%= f.text_field :name, value: @course.name %><br/>
+    <%= f.number_field :tuition, value: @course.tuition %><br/>
+    <%= f.number_field :hours, value: @course.hours %><br/>
     <%= f.submit %>
   <% end %>
 </div>
