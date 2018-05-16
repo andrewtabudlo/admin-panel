@@ -4,11 +4,14 @@
 
 
 <%= bootstrap_form_for @instructor do |f| %>
-    <%= f.text_field :fname, value: @instructor.fname%>
-    <%= f.text_field :lname, value: @instructor.lname%>
-    <%= f.text_field :email, value: @instructor.email%>
+    <%= f.text_field :fname %>
+    <%= f.text_field :lname %>
+    <%= f.text_field :email %>
+    <%= f.number_field :age, :max => 150 %>
+    <%= f.number_field :salary, :min => 0 %>
+    <%= f.select :degree, ['HS', 'College', 'Masters', 'PHD']%>
     <%= f.submit %>
 <% end %>
 
 
-<%= link_to 'Delete', instructor_path(@instructor), method: 'delete' %>
+<%= link_to 'Delete', instructor_path(@instructor), method: 'delete', data: { confirm: "Are you sure you want to delete #{@instructor.fname} #{@instructor.lname}?" } %>

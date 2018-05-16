@@ -4,12 +4,12 @@
 
 
 <%= bootstrap_form_for @cohort do |f| %>
-  <%= f.text_field :name, value: @cohort.name %>
-  <%= f.text_field :startdate, value: @cohort.startdate  %>
-  <%= f.number_field :tuition, value: @cohort.tuition  %>
-  <%= f.number_field :instructor_id, value: @cohort.instructor_id  %>
-  <%= f.number_field :course_id, value: @cohort.course_id  %>
+  <%= f.text_field :name %>
+  <%= f.text_field :startdate %>
+  <%= f.text_field :enddate %>
+  <%= f.select :instructor_id, Instructor.all.ids %>
+  <%= f.select :course_id, Course.all.ids %>
   <%= f.submit %>
 <% end %>
 
-<%= link_to 'Delete', instructor_path(@cohort), method: 'delete' %>
+<%= link_to 'Delete', instructor_path(@cohort), method: 'delete', data: { confirm: "Are you sure you want to delete #{@cohort.name}?" } %>

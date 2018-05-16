@@ -1,2 +1,0 @@
-class CourseTimeline < ApplicationRecord
-end

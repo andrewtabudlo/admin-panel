@@ -45,7 +45,7 @@ class CohortsController < ApplicationController
   private
 
   def cohort_params
-    params.require(:cohort).permit(:name, :startdate, :tuition, :instructor_id, :course_id, :id)
+    params.require(:cohort).permit(:name, :startdate, :enddate, :instructor_id, :course_id, :id)
   end
 
   def confirm_logged_in

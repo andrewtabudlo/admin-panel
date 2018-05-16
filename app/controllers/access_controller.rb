@@ -4,6 +4,7 @@ class AccessController < ApplicationController
 
   def menu
     # display text and links
+    @admin = Admin.find(1)
   end
 
   def login

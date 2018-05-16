@@ -3,7 +3,7 @@ class InstructorsController < ApplicationController
   before_action :confirm_logged_in
 
   def index
-    @instructors = Instructor.all
+    @instructors = Instructor.order(:lname)
   end
 
   def show
@@ -53,7 +53,7 @@ class InstructorsController < ApplicationController
   # list between create and update. Also, you can specialize this method
   # with per-user checking of permissible attributes.
   def instructor_params
-    params.require(:instructor).permit(:fname, :lname, :email, :id)
+    params.require(:instructor).permit(:fname, :lname, :email, :age, :salary, :degree, :id)
   end
 
   def confirm_logged_in

@@ -10,32 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180511153930) do
+ActiveRecord::Schema.define(version: 20180503214439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "country"
-    t.string "company"
-    t.string "state"
-    t.string "city"
-    t.string "streetaddress"
-    t.string "apartment"
-    t.string "zip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "admins", force: :cascade do |t|
     t.string "fname"
     t.string "lname"
     t.string "email"
-    t.boolean "active", default: false
-    t.integer "address_id"
+    t.integer "age"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
   end
 
   create_table "cohort_students", force: :cascade do |t|
@@ -50,28 +37,18 @@ ActiveRecord::Schema.define(version: 20180511153930) do
   create_table "cohorts", force: :cascade do |t|
     t.string "name"
     t.string "startdate"
-    t.integer "tuition"
+    t.string "enddate"
     t.integer "instructor_id"
     t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "course_timelines", force: :cascade do |t|
-    t.integer "course_id"
-    t.integer "cohort_id"
-    t.string "title"
-    t.string "date"
-    t.text "content"
-    t.string "assignment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "courses", force: :cascade do |t|
     t.string "code"
-    t.string "description"
+    t.string "name"
     t.integer "tuition"
+    t.integer "hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,9 +57,9 @@ ActiveRecord::Schema.define(version: 20180511153930) do
     t.string "fname"
     t.string "lname"
     t.string "email"
-    t.string "password"
-    t.boolean "active", default: false
-    t.integer "address_id"
+    t.integer "age"
+    t.integer "salary"
+    t.string "degree"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -90,10 +67,9 @@ ActiveRecord::Schema.define(version: 20180511153930) do
   create_table "students", force: :cascade do |t|
     t.string "fname"
     t.string "lname"
+    t.integer "age"
     t.string "email"
-    t.string "password"
-    t.boolean "active", default: false
-    t.integer "address_id"
+    t.string "degree"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

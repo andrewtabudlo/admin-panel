@@ -5,8 +5,8 @@
   <%= bootstrap_form_for @cohort do |f| %>
     <%= f.text_field :name %>
     <%= f.text_field :startdate %>
-    <%= f.text_field :tuition %>
-    <%= f.number_field :instructor_id %>
-    <%= f.number_field :course_id %>
+    <%= f.text_field :enddate %>
+    <%= f.select :instructor_id, Instructor.all.ids %>
+    <%= f.select :course_id, Course.all.ids %>
     <%= f.submit %>
   <% end %>

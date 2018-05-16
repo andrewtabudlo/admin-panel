@@ -3,10 +3,9 @@ class CreateStudents < ActiveRecord::Migration[5.1]
     create_table :students do |t|
       t.string :fname
       t.string :lname
+      t.integer :age
       t.string :email
-      t.string :password
-      t.boolean :active, :default => false
-      t.integer :address_id
+      t.string :degree
 
       t.timestamps
     end

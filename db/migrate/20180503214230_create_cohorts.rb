@@ -3,7 +3,7 @@ class CreateCohorts < ActiveRecord::Migration[5.1]
     create_table :cohorts do |t|
       t.string :name
       t.string :startdate
-      t.integer :tuition
+      t.string :enddate
       t.integer :instructor_id
       t.integer :course_id
 

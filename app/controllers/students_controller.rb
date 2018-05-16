@@ -3,12 +3,13 @@ class StudentsController < ApplicationController
   before_action :confirm_logged_in
 
   def index
-    @students = Student.all
+    @students = Student.order(:lname)
   end
 
   def show
     @student = Student.find(params[:id])
-    @cohorts = CohortStudent.where(student_id: params[:id])
+    @cohorts = CohortStudent.find_by(student_id: params[:id])
+
   end
 
   def new
@@ -52,7 +53,7 @@ class StudentsController < ApplicationController
   # list between create and update. Also, you can specialize this method
   # with per-user checking of permissible attributes.
   def student_params
-    params.require(:student).permit(:fname, :lname, :email, :id)
+    params.require(:student).permit(:fname, :lname, :age, :email, :degree, :id)
   end
 
   def confirm_logged_in

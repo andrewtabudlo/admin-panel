@@ -1,6 +1,9 @@
-<%= form_for @cohortstudent do |f| %>
-  <%= f.label :cohort_id %>
-  <%= f.number_field :cohort_id, value: :cohort_id %><br/>
-  <%= f.label :student_id %>
-  <%= f.number_field :student_id, value: :student_id %><br/>
+<%= link_to("Back to Cohorts", cohorts_path, :class => 'back-link') %>
+
+<%= bootstrap_form_for @cohortstudent do |f| %>
+  <%= f.select :cohort_id, Cohort.all.ids %>
+  <%= f.select :student_id, Student.all.ids %>
+  <%= f.number_field :grade, :min => 0 %>
+  <%= f.select :passing, [true, false]%>
+  <%= f.submit %>
 <% end %>

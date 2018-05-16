@@ -4,9 +4,12 @@
 
 <div>
   <%= bootstrap_form_for @course do |f| %>
-    <%= f.text_field :code, value: @course.code %><br/>
-    <%= f.text_field :description, value: @course.description %><br/>
-    <%= f.text_field :tuition, value: @course.tuition %><br/>
+    <%= f.text_field :code %>
+    <%= f.text_field :name %>
+    <%= f.number_field :tuition, :min => 0 %>
+    <%= f.number_field :hours %>
     <%= f.submit %>
   <% end %>
 </div>
+
+<%= link_to "Delete", course_path(@course), method: 'delete', data: { confirm: "Are you sure you want to delete #{@course.name}?" } %>

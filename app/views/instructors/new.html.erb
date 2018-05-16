@@ -6,5 +6,8 @@
     <%= f.text_field :fname %>
     <%= f.text_field :lname %>
     <%= f.text_field :email %>
+    <%= f.number_field :age, :max => 150 %>
+    <%= f.number_field :salary, :min => 0 %>
+    <%= f.select :degree, ['HS', 'College', 'Masters', 'PHD']%>
     <%= f.submit %>
 <% end %>

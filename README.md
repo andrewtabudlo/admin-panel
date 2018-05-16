@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Admin Login:
+
+email: tony@starkmail.com
+password: avengersassemble

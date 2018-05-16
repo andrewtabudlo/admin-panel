@@ -6,9 +6,11 @@
 <%= bootstrap_form_for @student do |f| %>
     <%= f.text_field :fname %>
     <%= f.text_field :lname %>
+    <%= f.number_field :age, :max => 150 %>
     <%= f.text_field :email %>
+    <%= f.select :degree, ['HS', 'College', 'Masters', 'PHD'] %>
     <%= f.submit %>
 <% end %>
 
 
-<%= link_to 'Delete', student_path(@student), method: :delete %>
+<%= link_to 'Delete', student_path(@student), method: :delete, data: { confirm: "Are you sure you want to delete #{@student.fname} #{@student.lname}?" } %>
