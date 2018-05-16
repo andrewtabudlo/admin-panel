@@ -7,7 +7,7 @@ class CohortStudentsController < ApplicationController
   end
 
   def create
-    @cohortstudent = CohortStudent.new(cohortstudent_params)
+    @cohortstudent = CohortStudent.new(cohort_student_params)
     if @cohortstudent.save
       redirect_to cohorts_path
     else
@@ -16,12 +16,12 @@ class CohortStudentsController < ApplicationController
   end
 
   def edit
-    @cohortstudent = CohortStudent.find_by(student_id: 1)
+    @cohortstudent = CohortStudent.find_by(student_id: params[:id])
   end
 
   def update
-    @cohortstudent = CohortStudent.find_by(student_id: 1)
-    if @cohortstudent = CohortStudent.update(cohortstudent_params)
+    @cohortstudent = CohortStudent.find_by(student_id: params[:id])
+    if @cohortstudent.update(cohort_student_params)
       redirect_to cohorts_path
     else
       redirect_to 'edit'
@@ -30,8 +30,8 @@ class CohortStudentsController < ApplicationController
 
   private
 
-  def cohortstudent_params
-    params.require(:cohort_student).permit(:cohort_id, :student_id, :id)
+  def cohort_student_params
+    params.require(:cohort_student).permit(:cohort_id, :student_id, :grade, :passing, :id)
   end
 
   def confirm_logged_in

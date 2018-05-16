@@ -45,7 +45,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:code, :description, :tuition, :id)
+    params.require(:course).permit(:code, :name, :tuition, :hours, :id)
   end
 
   def confirm_logged_in

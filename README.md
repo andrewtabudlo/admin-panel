@@ -23,15 +23,7 @@ Things you may want to cover:
 
 * ...
 
-Anthony Stark is admin
-To sign in add password by running:
+Admin Login:
 
-``` rails c ```
-
-then:
-
-``` admin = Admin.find(1)
-admin.password = "avengersassemble"
-admin.save ```
-
-password will be stored as hash and will now be accepted on login
+email: tony@starkmail.com
+password: avengersassemble

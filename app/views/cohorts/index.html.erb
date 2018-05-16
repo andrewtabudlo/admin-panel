@@ -7,6 +7,7 @@
       <th scope="col">Course</th>
       <th scope="col">Name</th>
       <th scope="col">Start Date</th>
+      <th scope="col">End Date</th>
       <th scope="col">Instructor</th>
       <th scope="col">Actions</th>
     </tr>
@@ -19,9 +20,10 @@
       <td><%= i.name %></td>
       <td><%= Course.find(i.course_id).name %></td>
       <td><%= i.startdate %></td>
+      <td><%= i.enddate %></td>
       <td><%= Instructor.find(i.instructor_id).fname %> <%= Instructor.find(i.instructor_id).lname %></td>
-      <td><%= link_to("Show", cohort_path(i), :class => 'action show') %>
-        <%= link_to("Edit", edit_cohort_path(i), :class => 'action edit') %>
+      <td><%= link_to("Show", cohort_path(i), :class => 'action show') %> |
+        <%= link_to("Edit", edit_cohort_path(i), :class => 'action edit') %> |
         <%= link_to 'Delete', cohort_path(i), method: 'delete', data: { confirm: "Are you sure you want to delete #{i.name}?" } %>
       </td>
     </tr>

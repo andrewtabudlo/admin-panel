@@ -15,7 +15,6 @@
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Email</th>
-      <th scope="col">Cohorts</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -25,7 +24,6 @@
       <td><%= @student.fname %></td>
       <td><%= @student.lname %></td>
       <td><%= @student.email %></td>
-      <td><%= Cohort.find_by(id: @cohorts.cohort_id).name %></td>
       <td><%= link_to("Show", student_path(@student.id), :class => 'action show') %>
         <%= link_to("Edit", edit_student_path(@student.id), :class => 'action edit') %>
         <%= link_to 'Delete', student_path(@student.id), method: 'delete', data: { confirm: "Are you sure you want to delete #{@student.fname} #{@student.lname}?" } %>

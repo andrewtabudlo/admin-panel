@@ -32,9 +32,9 @@ Course.create(code: 'DCL101', name: 'Damage Control 101', tuition: 10000, hours:
 Course.create(code: 'RCT101', name: 'React.js 101', tuition: 10000, hours: 999)
 
 Cohort.create(name: 'AVG101-MAY-18', startdate: 'May 1, 2018', enddate: 'August 1, 2018', instructor_id: 1, course_id: 1)
-Cohort.create(name: 'AVG202-JUN-18', startdate: 'June 1, 2018', enddate: 'September 1, 2018', instructor_id: 3, course_id: 2)
-Cohort.create(name: 'DCL101-SEP-18', startdate: 'September 1, 2018', enddate: 'December 1, 2018', instructor_id: 2, course_id: 3)
-Cohort.create(name: 'RCT101-JAN-19', startdate: 'January 1, 2019', enddate: 'April 1, 2018', instructor_id: 3, course_id: 4)
+Cohort.create(name: 'AVG202-JUN-18', startdate: 'June 1, 2018', enddate: 'September 1, 2018', instructor_id: 2, course_id: 2)
+Cohort.create(name: 'DCL101-SEP-18', startdate: 'September 1, 2018', enddate: 'December 1, 2018', instructor_id: 3, course_id: 3)
+Cohort.create(name: 'RCT101-JAN-19', startdate: 'January 1, 2019', enddate: 'April 1, 2018', instructor_id: 4, course_id: 4)
 
 CohortStudent.create(cohort_id: 1, student_id: 1, grade: 100, passing: true)
 CohortStudent.create(cohort_id: 1, student_id: 2, grade: 100, passing: true)

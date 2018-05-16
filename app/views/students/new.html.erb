@@ -3,6 +3,8 @@
 <%= bootstrap_form_for @student do |f| %>
     <%= f.text_field :fname %>
     <%= f.text_field :lname %>
+    <%= f.number_field :age, :max => 150 %>
     <%= f.text_field :email %>
+    <%= f.select :degree, ['HS', 'College', 'Masters', 'PHD'] %>
     <%= f.submit %>
 <% end %>

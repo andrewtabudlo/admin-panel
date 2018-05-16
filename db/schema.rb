@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20180503214439) do
     t.string "name"
     t.string "startdate"
     t.string "enddate"
-    t.integer "tuition"
     t.integer "instructor_id"
     t.integer "course_id"
     t.datetime "created_at", null: false

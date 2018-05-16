@@ -8,7 +8,7 @@
 
 <div class="menu">
   <h2>Admin Menu</h2>
-  <div class="identity">Logged in as:</div>
+  <div class="identity">Logged in as: <%= @admin.fname %> <%= @admin.lname %></div>
   <ul>
     <li><%= link_to("Courses", courses_path) %></li>
     <li><%= link_to("Cohorts", cohorts_path) %></li>
