@@ -21,7 +21,6 @@
       <td><%= @cohort.enddate %></td>
       <td><%= Instructor.find(@cohort.instructor_id).fname %> <%= Instructor.find(@cohort.instructor_id).lname %></td>
       <td>
-        <%= link_to("Show", cohort_path(@cohort), :class => 'action show') %> |
         <%= link_to("Edit", edit_cohort_path(@cohort), :class => 'action edit') %> |
         <%= link_to "Delete", cohort_path(@cohort), method: 'delete', data: { confirm: "Are you sure you want to delete #{@cohort.name}?" } %>
       </td>

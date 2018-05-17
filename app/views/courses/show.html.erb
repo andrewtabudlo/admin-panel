@@ -21,9 +21,9 @@
         <td><%= @course.name %></td>
         <td><%= @course.tuition %></td>
         <td><%= @course.hours %></td>
-        <td>
+        <td><%= link_to("Show", course_path(@course), :class => 'action show') %> |
           <%= link_to("Edit", edit_course_path(@course), :class => 'action edit') %> |
-          <%= link_to "Delete", course_path(@course), remote: true, method: 'delete', data: { confirm: "Are you sure you want to delete #{@course.name}?" } %>
+          <%= link_to "Delete", course_path(@course), method: 'delete', data: { confirm: "Are you sure you want to delete #{@course.name}?" } %>
         </td>
       </tr>
     </tbody>
@@ -47,14 +47,10 @@
         <th scope="row">1</th>
         <td><%= c.name %></td>
         <td><%= c.startdate %></td>
-        <% if c.instructor_id == nil %>
-          <td>n/a</td>
-        <% else %>
-          <td><%= Instructor.find(c.instructor_id).fname %> <%= Instructor.find(c.instructor_id).lname %></td>
-        <% end %>
-        <td><%= link_to("Show", cohort_path(c), remote: true) %> |
+        <td><%= Instructor.find(c.instructor_id).fname %> <%= Instructor.find(c.instructor_id).lname %></td>
+        <td><%= link_to("Show", cohort_path(c), :class => 'action show') %> |
           <%= link_to("Edit", edit_cohort_path(c), :class => 'action edit') %> |
-          <%= link_to "Delete", cohort_path(c), remote: true, method: 'delete', data: { confirm: "Are you sure you want to delete #{c.name}?" } %>
+          <%= link_to "Delete", cohort_path(c), method: 'delete', data: { confirm: "Are you sure you want to delete #{c.name}?" } %>
         </td>
 
       </tr>
