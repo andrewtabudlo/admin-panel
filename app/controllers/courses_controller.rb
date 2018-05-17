@@ -18,6 +18,7 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
+      flash[:notice] = "Course created successfully."
       redirect_to courses_path
     else
       redirect_to 'new'
@@ -31,6 +32,7 @@ class CoursesController < ApplicationController
   def update
     @course = Course.find(params[:id])
     if @course.update(course_params)
+      flash[:notice] = "Course updated successfully."
       redirect_to course_path @course
     else
       redirect_to 'edit'
@@ -38,7 +40,12 @@ class CoursesController < ApplicationController
   end
 
   def destroy
+    deletecohorts = Cohort.where(course_id: params[:id])
+    deletecohorts.each do |c|
+      c.destroy
+    end
     Course.find(params[:id]).destroy
+    flash[:notice] = "Course destroyed successfully."
     redirect_to courses_path
   end
 

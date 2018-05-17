@@ -18,6 +18,7 @@ class CohortsController < ApplicationController
   def create
     @cohort = Cohort.new(cohort_params)
     if @cohort.save
+      flash[:notice] = "Cohort created successfully."
       redirect_to cohorts_path
     else
       redirect_to 'new'
@@ -31,6 +32,7 @@ class CohortsController < ApplicationController
   def update
     @cohort = Cohort.find(params[:id])
     if @cohort.update(cohort_params)
+      flash[:notice] = "Cohort updated successfully."
       redirect_to cohorts_path
     else
       redirect_to 'edit'
@@ -38,7 +40,12 @@ class CohortsController < ApplicationController
   end
 
   def destroy
+    deletecs = CohortStudent.where(cohort_id: params[:id])
+    deletecs.each do |c|
+      c.destroy
+    end
     Cohort.find(params[:id]).destroy
+    flash[:notice] = "Cohort destroyed successfully."
     redirect_to cohorts_path
   end
 

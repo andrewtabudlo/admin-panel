@@ -17,6 +17,7 @@ class InstructorsController < ApplicationController
   def create
     @instructor = Instructor.new(instructor_params)
     if @instructor.save
+      flash[:notice] = "Instructor created successfully."
       redirect_to instructors_path
     else
       redirect_to 'new'
@@ -30,6 +31,7 @@ class InstructorsController < ApplicationController
   def update
     @instructor = Instructor.find(params[:id])
     if @instructor.update(instructor_params)
+      flash[:notice] = "Instructor updated successfully."
       redirect_to instructor_path @instructor
     else
       redirect_to 'edit'
@@ -42,7 +44,13 @@ class InstructorsController < ApplicationController
   end
 
   def destroy
+    editcohort = Cohort.where(instructor_id: params[:id])
+    editcohort.each do |c|
+      c.instructor_id = nil
+      c.save
+    end
     Instructor.find(params[:id]).destroy
+    flash[:notice] = "Instructor destroyed successfully."
     redirect_to instructors_path
   end
 

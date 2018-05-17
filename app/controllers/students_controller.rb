@@ -41,6 +41,10 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    deletestudent = CohortStudent.where(student_id: params[:id])
+    deletestudent.each do |s|
+      s.destroy
+    end
     Student.find(params[:id]).destroy
     flash[:notice] = "Student destroyed successfully."
     redirect_to students_path
