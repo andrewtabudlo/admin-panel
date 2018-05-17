@@ -29,10 +29,14 @@
         <td><%= i.email %></td>
         <td><%= i.degree %></td>
         <td><%= i.salary %></td>
-        <td><%= Cohort.find_by(instructor_id: i.id).name %></td>
+        <% if Cohort.find_by(instructor_id: i.id) == nil %>
+          <td>n/a</td>
+        <% else %>
+          <td><%= Cohort.find_by(instructor_id: i.id).name %></td>
+        <% end %>
         <td><%= link_to("Show", instructor_path(i), remote: true) %> |
           <%= link_to("Edit", edit_instructor_path(i), :class => 'action edit') %> |
-          <%= link_to('Delete', instructor_path(i), method: 'delete', data: { confirm: "Are you sure you want to delete #{i.fname} #{i.lname}?" }) %>
+          <%= link_to('Delete', instructor_path(i), remote: true, method: 'delete', data: { confirm: "Are you sure you want to delete #{i.fname} #{i.lname}?" }) %>
         </td>
       </tr>
       <% end %>

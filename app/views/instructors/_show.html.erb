@@ -1,4 +1,4 @@
-<h1>Instructors#show</h1>
+<h1>Instructors</h1>
 
 <% if !flash[:notice].blank? %>
   <div class="notice alert alert-primary" role="alert">
@@ -27,10 +27,14 @@
       <td><%= @instructor.email %></td>
       <td><%= @instructor.degree %></td>
       <td><%= @instructor.salary %></td>
-      <td><%= Cohort.find_by(instructor_id: @instructor.id).name %></td>
-      <td><%= link_to("Show", instructor_path(@instructor.id), :class => 'action show') %>
+      <% if Cohort.find_by(instructor_id: @instructor.id) == nil %>
+        <td>n/a</td>
+      <% else %>
+        <td><%= Cohort.find_by(instructor_id: @instructor.id).name %></td>
+      <% end %>
+      <td>
         <%= link_to("Edit", edit_instructor_path(@instructor.id), :class => 'action edit') %>
-        <%= link_to('Delete', instructor_path(@instructor.id), method: 'delete', data: { confirm: "Are you sure you want to delete #{@instructor.fname} #{@instructor.lname}?" }) %>
+        <%= link_to('Delete', instructor_path(@instructor.id), remote: true, method: 'delete', data: { confirm: "Are you sure you want to delete #{@instructor.fname} #{@instructor.lname}?" }) %>
       </td>
     </tr>
   </tbody>

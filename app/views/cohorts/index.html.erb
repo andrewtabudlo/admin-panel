@@ -1,34 +1,44 @@
-<h1>Cohorts</h1>
+<div id='target-for-change'>
+  <h1>Cohorts</h1>
 
-<table class="table table-bordered table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Course</th>
-      <th scope="col">Name</th>
-      <th scope="col">Start Date</th>
-      <th scope="col">End Date</th>
-      <th scope="col">Instructor</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% x = 0 %>
-    <% @cohorts.each do |i| %>
-    <tr>
-      <th scope="row"><%= x += 1 %></th>
-      <td><%= i.name %></td>
-      <td><%= Course.find(i.course_id).name %></td>
-      <td><%= i.startdate %></td>
-      <td><%= i.enddate %></td>
-      <td><%= Instructor.find(i.instructor_id).fname %> <%= Instructor.find(i.instructor_id).lname %></td>
-      <td><%= link_to("Show", cohort_path(i), :class => 'action show') %> |
-        <%= link_to("Edit", edit_cohort_path(i), :class => 'action edit') %> |
-        <%= link_to 'Delete', cohort_path(i), method: 'delete', data: { confirm: "Are you sure you want to delete #{i.name}?" } %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% if !flash[:notice].blank? %>
+    <div class="notice alert alert-primary" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
-<%= link_to("Add New Cohort", new_cohort_path, :class => 'action new') %>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Course</th>
+        <th scope="col">Name</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Instructor</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% x = 0 %>
+      <% @cohorts.each do |i| %>
+      <tr>
+        <td><%= i.name %></td>
+        <td><%= Course.find(i.course_id).name %></td>
+        <td><%= i.startdate %></td>
+        <td><%= i.enddate %></td>
+        <% if i.instructor_id == nil %>
+          <td>n/a</td>
+        <% else %>
+          <td><%= Instructor.find(i.instructor_id).fname %> <%= Instructor.find(i.instructor_id).lname %></td>
+        <% end %>
+        <td><%= link_to("Show", cohort_path(i), remote: true) %> |
+          <%= link_to("Edit", edit_cohort_path(i), :class => 'action edit') %> |
+          <%= link_to 'Delete', cohort_path(i), remote: true, method: 'delete', data: { confirm: "Are you sure you want to delete #{i.name}?" } %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to("Add New Cohort", new_cohort_path, :class => 'action new') %>
+</div>
