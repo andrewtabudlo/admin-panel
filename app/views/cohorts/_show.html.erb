@@ -1,65 +1,67 @@
-<h1>Cohorts</h1>
+<div id="target-for-change">
+  <h1>Cohorts</h1>
 
-<%= link_to("Back to Cohorts", cohorts_path, :class => 'back-link') %>
+  <%= link_to("Back to Cohorts", cohorts_path, :class => 'back-link') %>
 
-<table class="table table-bordered table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Course</th>
-      <th scope="col">Name</th>
-      <th scope="col">Start Date</th>
-      <th scope="col">End Date</th>
-      <th scope="col">Instructor</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @cohort.name %></td>
-      <td><%= Course.find(@cohort.course_id).name %></td>
-      <td><%= @cohort.startdate %></td>
-      <td><%= @cohort.enddate %></td>
-      <% if @cohort.instructor_id == nil %>
-        <td>n/a</td>
-      <% else %>
-        <td><%= Instructor.find(@cohort.instructor_id).fname %> <%= Instructor.find(@cohort.instructor_id).lname %></td>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Course</th>
+        <th scope="col">Name</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Instructor</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @cohort.name %></td>
+        <td><%= Course.find(@cohort.course_id).name %></td>
+        <td><%= @cohort.startdate %></td>
+        <td><%= @cohort.enddate %></td>
+        <% if @cohort.instructor_id == nil %>
+          <td>n/a</td>
+        <% else %>
+          <td><%= Instructor.find(@cohort.instructor_id).fname %> <%= Instructor.find(@cohort.instructor_id).lname %></td>
+        <% end %>
+        <td>
+          <%= link_to("Edit", edit_cohort_path(@cohort), :class => 'action edit') %> |
+          <%= link_to "Delete", cohort_path(@cohort), remote: true, method: 'delete', data: { confirm: "Are you sure you want to delete #{@cohort.name}?" } %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1>Enrolled Students</h1>
+
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |s| %>
+      <tr>
+        <td><%= Student.find(s.student_id).fname %></td>
+        <td><%= Student.find(s.student_id).lname %></td>
+        <td><%= @cohort.startdate %></td>
+        <td><%= @cohort.enddate %></td>
+        <td>
+          <%= link_to("Show", student_path(s.student_id), remote: true) %> |
+          <%= link_to("Edit", edit_student_path(s.student_id), :class => 'action edit') %> |
+          <%= link_to("Change Grade/Cohort", edit_cohort_student_path(s.student_id), :class => 'action edit') %> |
+          <%= link_to("Delete", student_path(s.student_id), remote: true, method: 'delete', data: { confirm: "Are you sure you want to delete #{Student.find(s.student_id).fname} #{Student.find(s.student_id).lname}?" }) %>
+        </td>
+      </tr>
       <% end %>
-      <td>
-        <%= link_to("Edit", edit_cohort_path(@cohort), :class => 'action edit') %> |
-        <%= link_to "Delete", cohort_path(@cohort), remote: true, method: 'delete', data: { confirm: "Are you sure you want to delete #{@cohort.name}?" } %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<h1>Enrolled Students</h1>
-
-<table class="table table-bordered table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Start Date</th>
-      <th scope="col">End Date</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @students.each do |s| %>
-    <tr>
-      <td><%= Student.find(s.student_id).fname %></td>
-      <td><%= Student.find(s.student_id).lname %></td>
-      <td><%= @cohort.startdate %></td>
-      <td><%= @cohort.enddate %></td>
-      <td>
-        <%= link_to("Show", student_path(s.student_id), remote: true) %> |
-        <%= link_to("Edit", edit_student_path(s.student_id), :class => 'action edit') %> |
-        <%= link_to("Change Grade/Cohort", edit_cohort_student_path(s.student_id), :class => 'action edit') %> |
-        <%= link_to("Delete", student_path(s.student_id), remote: true, method: 'delete', data: { confirm: "Are you sure you want to delete #{Student.find(s.student_id).fname} #{Student.find(s.student_id).lname}?" }) %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to("Add New Student to Cohort", new_cohort_student_path, :class => 'action new') %>
+  <%= link_to("Add New Student to Cohort", new_cohort_student_path, :class => 'action new') %>
+</div>

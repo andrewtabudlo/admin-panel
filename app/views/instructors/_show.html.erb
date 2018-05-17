@@ -1,41 +1,39 @@
-<h1>Instructors</h1>
+<div id="target-for-change">
+  <h1>Instructors#show</h1>
 
-<% if !flash[:notice].blank? %>
-  <div class="notice alert alert-primary" role="alert">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
+  <% if !flash[:notice].blank? %>
+    <div class="notice alert alert-primary" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
-<%= link_to("Back to Instructors", instructors_path, :class => 'back-link') %>
+  <%= link_to("Back to Instructors", instructors_path, :class => 'back-link') %>
 
-<table class="table table-bordered table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Email</th>
-      <th scope="col">Degree</th>
-      <th scope="col">Salary</th>
-      <th scope="col">Cohorts</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @instructor.fname %></td>
-      <td><%= @instructor.lname %></td>
-      <td><%= @instructor.email %></td>
-      <td><%= @instructor.degree %></td>
-      <td><%= @instructor.salary %></td>
-      <% if Cohort.find_by(instructor_id: @instructor.id) == nil %>
-        <td>n/a</td>
-      <% else %>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Email</th>
+        <th scope="col">Degree</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Cohorts</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @instructor.fname %></td>
+        <td><%= @instructor.lname %></td>
+        <td><%= @instructor.email %></td>
+        <td><%= @instructor.degree %></td>
+        <td><%= @instructor.salary %></td>
         <td><%= Cohort.find_by(instructor_id: @instructor.id).name %></td>
-      <% end %>
-      <td>
-        <%= link_to("Edit", edit_instructor_path(@instructor.id), :class => 'action edit') %>
-        <%= link_to('Delete', instructor_path(@instructor.id), remote: true, method: 'delete', data: { confirm: "Are you sure you want to delete #{@instructor.fname} #{@instructor.lname}?" }) %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <td>
+          <%= link_to("Edit", edit_instructor_path(@instructor.id), :class => 'action edit') %>
+          <%= link_to('Delete', instructor_path(@instructor.id), method: 'delete', data: { confirm: "Are you sure you want to delete #{@instructor.fname} #{@instructor.lname}?" }) %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
