@@ -9,7 +9,6 @@ class StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
     @cohorts = CohortStudent.find_by(student_id: params[:id])
-
   end
 
   def new

@@ -1,1 +1,4 @@
-$("#target-for-change").html("<%= j render(partial: 'show') %>");
+
+$("#target-for-change").on("ajax:success", function(){
+  $("<%= j render(partial: 'show') %>").insertAfter("#target-for-change")
+})
